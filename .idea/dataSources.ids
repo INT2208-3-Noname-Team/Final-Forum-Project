@@ -9,4 +9,7 @@
   <data-source source="LOCAL" name="Rails Final-Forum-Project: production" uuid="517f3f3d-a130-4f4a-9c41-4b2a0f750467">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails Final-Forum-Project: cucumber" uuid="1543abcc-f44e-401b-a9c8-5ef62b14410e">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
