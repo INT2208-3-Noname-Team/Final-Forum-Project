@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails Final-Forum-Project: development" uuid="d0e43ebc-1721-4c34-bfa1-b387670041d3">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails Final-Forum-Project: test" uuid="fa250633-123f-427a-a4af-b068f0921fb0">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails Final-Forum-Project: production" uuid="517f3f3d-a130-4f4a-9c41-4b2a0f750467">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
