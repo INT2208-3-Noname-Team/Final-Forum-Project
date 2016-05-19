@@ -7,6 +7,10 @@
     <h1 class="breadcrumb">Update your profile</h1>
     <%= form_for @info  do |f| %>
        <%= render 'shared/error_update_messages' %>
+        <div class="gravatar_edit col-md-12">
+          <%= gravatar_for @user %>
+          <a href="http://gravatar.com/emails" target="_blank">Change your Gravatar</a>
+        </div>
       <div class="col-md-4">
         <%= f.label :sex, "Gender"%>
         <%= f.select :sex, options_for_select([["Male","Male"],["Female","Female"]], @info.sex), class: 'form-control'%>
