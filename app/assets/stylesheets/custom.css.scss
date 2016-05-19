@@ -1,5 +1,5 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 /* universal */
 
@@ -272,7 +272,7 @@ span.picture {
   padding: 0 5px;
 }
 
-.dropdown-menu {
-  min-width:200px;
-  width:100%;
-}
+//.dropdown-menu {
+//  min-width:200px;
+//  width:100%;
+//}

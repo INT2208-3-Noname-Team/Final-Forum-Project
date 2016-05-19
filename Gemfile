@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'bcrypt', '~> 3.1.2', :require => "bcrypt"
+gem 'country_select'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -46,6 +47,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'rails_12factor', group: :production
 
 group :test do
   gem "rspec-rails"
