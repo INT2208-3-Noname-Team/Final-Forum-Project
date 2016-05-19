@@ -1,2 +1,26 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<% provide(:title, "Homepage") %>
+<div class="container">
+  <div class="col-md-8">
+    <ol class = "breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+    </ol>
+    <div class = "panel panel-default">
+      <div class = "panel-heading">
+        <h3 class = "panel-title">
+          <b>Category</b>
+        </h3>
+      </div>
+      <% @category.each do |category| %>
+        <div class = "panel-body">
+          <h3 class = "panel-title">
+            <div class="col-md-12"><b><%= link_to category.name, category%></b></div>
+          </h3>
+          <div class="col-md-8">
+            <%= category.description %>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
