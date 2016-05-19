@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.information = Information.create(phone: "0000000000")
       flash[:success] = "Sign up success! Welcome to forum"
       redirect_to @user
     else
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @info = @user.information
   end
 
   private

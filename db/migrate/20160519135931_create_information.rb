@@ -6,6 +6,7 @@ class CreateInformation < ActiveRecord::Migration
       t.string :phone
       t.string :address
       t.text :introduce
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

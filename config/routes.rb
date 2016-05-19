@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'informations/edit'
+
   get 'users/show'
 
   root 'categories#index'
