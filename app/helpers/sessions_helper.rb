@@ -54,6 +54,13 @@ module SessionsHelper
     end
   end
 
+  def not_log_in_user
+    if logged_in?
+      flash[:danger] = "You are already logged in."
+      redirect_to root_path
+    end
+  end
+
   #Check correct_user
   def correct_user
     @user = User.find(params[:id])

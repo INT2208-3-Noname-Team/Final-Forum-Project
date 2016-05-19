@@ -27,6 +27,7 @@ end
 #   fill_in(field, with: value, :match => :prefer_exact)
 # end
 
+
 Then(/^I should see the error "([^"]*)"$/) do |message|
   expect(page).to have_content(message)
 end
