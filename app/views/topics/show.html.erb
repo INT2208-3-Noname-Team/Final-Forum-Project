@@ -20,18 +20,22 @@
       </div>
       <div class="panel-body">
         <div class="col-md-3 center">
-          <%= gravatar_for(@user) %>
-          <br>
-          <%= link_to @user.name, @user %>
-          <br>
-          <%= pluralize(@user.topics.count + @user.comments.count, "post") %>
+          <div class="col-md-12 center">
+            <%= gravatar_for(@user) %>
+          </div>
+          <div class="col-md-12 center">
+            <%= link_to @user.name, @user %>
+          </div>
+          <div class="col-md-12 center"><%= pluralize(@user.topics.count + @user.comments.count, "post") %></div>
         </div>
         <div class="col-md-9"><%= raw @topic.content %></div>
       </div>
       <div class="panel-body">
         <hr>
         <div class="col-md-4">
-          <%= link_to "Edit", edit_topic_path %>
+          <% if current_user?(@user) %>
+              <%= link_to "Edit", edit_topic_path %>
+          <% end %>
         </div>
         <div class="col-md-7"><i>Created at: <%= @topic.created_at %></i></div>
         <div class="col-md-1"><i>#1</i></div>
@@ -39,28 +43,34 @@
     </div>
     <% count = 2 %>
     <% @all_comment.each do |t| %>
-      <% user_comment = User.find_by_id(t.user_id) %>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="col-md-3 center">
-            <%= gravatar_for(user_comment) %>
-            <br>
-            <%= link_to user_comment.name, user_comment %>
-            <br>
-            <%= pluralize(user_comment.topics.count + user_comment.comments.count, "post") %>
+        <% user_comment = User.find_by_id(t.user_id) %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-3 center">
+              <div class="col-md-12">
+                <%= gravatar_for(user_comment) %>
+              </div>
+              <div class="col-md-12">
+                <%= link_to user_comment.name, user_comment %>
+              </div>
+              <div class="col-md-12">
+
+                <%= pluralize(user_comment.topics.count + user_comment.comments.count, "post") %></div>
+            </div>
+            <div class="col-md-9"><%= raw t.content %></div>
           </div>
-          <div class="col-md-9"><%= raw t.content %></div>
-        </div>
-        <div class="panel-body">
-          <hr>
-          <div class="col-md-4">
-            <%= link_to "edit", edit_comment_path(t) %>
+          <div class="panel-body">
+            <hr>
+            <div class="col-md-4">
+              <% if current_user?(user_comment) %>
+                  <%= link_to "Edit", edit_comment_path(t) %>
+              <% end %>
+            </div>
+            <div class="col-md-7"><i>Created at: <%= t.created_at %></i></div>
+            <div class="col-md-1"><i>#<%= count %></i></div>
           </div>
-          <div class="col-md-7"><i>Created at: <%= t.created_at %></i></div>
-          <div class="col-md-1"><i>#<%= count %></i></div>
         </div>
-      </div>
-      <% count = count + 1 %>
+        <% count = count + 1 %>
     <% end %>
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -69,24 +79,24 @@
         </h3>
       </div>
       <% if logged_in? %>
-        <div class="panel-body">
-          <div class="col-md-3 center">
-            <%= gravatar_for(@user_now) %>
-            <br>
+          <div class="panel-body">
+            <div class="col-md-3 center">
+              <%= gravatar_for(@user_now) %>
+              <br>
+            </div>
+            <%= form_for @comment do |f| %>
+                <%= render 'shared/error_comment_messages' %>
+                <div class="col-md-7 center">
+                  <%= f.cktext_area :content, :ckeditor => {:toolbar => 'mini'} %>
+                  <%= f.hidden_field :topic_id, :value => @topic.id %>
+                </div>
+                <div class="col-md-2">
+                  <%= f.submit "Save", class: "btn btn-primary" %>
+                </div>
+            <% end %>
           </div>
-          <%= form_for @comment do |f| %>
-            <%= render 'shared/error_comment_messages' %>
-            <div class="col-md-7 center">
-              <%= f.cktext_area :content, :ckeditor => {:toolbar => 'mini'} %>
-              <%= f.radio_button :topic_id, @topic.id, checked: true %>
-            </div>
-            <div class="col-md-2">
-              <%= f.submit "Save", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-        </div>
       <% else %>
-        You need <%= link_to "Log in", login_path %> or <%= link_to "Sign up", signup_path %> to add a comment!
+          You need <%= link_to "Log in", login_path %> or <%= link_to "Sign up", signup_path %> to add a comment!
       <% end %>
     </div>
   </div>

@@ -9,6 +9,7 @@ gem 'country_select'
 gem 'ckeditor', :git => "https://github.com/galetahub/ckeditor.git"
 gem 'seed_dump'
 gem 'paperclip'
+gem 'simplecov', :require => false, :group => :test
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
