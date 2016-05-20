@@ -7,6 +7,8 @@ class CategoriesController < ApplicationController
 
   def index
     @category = Category.all
+    #get 10 lastest topic
+    @latest_topic = Topic.last(10).reverse
   end
 
   def new
