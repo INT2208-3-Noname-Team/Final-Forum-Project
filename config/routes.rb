@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+
+  get 'comments/edit'
+
   mount Ckeditor::Engine => '/ckeditor'
   get 'topics/index'
 
