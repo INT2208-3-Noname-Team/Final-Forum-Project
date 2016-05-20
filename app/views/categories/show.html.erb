@@ -18,7 +18,7 @@
         <div class = "panel panel-default">
           <div class = "panel-body">
             <div class="col-md-2">
-              <div class="round-image-50"><%= image_tag(gravatar_for(author)) %></div>
+              <div class="round-image-50"><%= gravatar_for(author) %></div>
             </div>
             <div class="col-md-8"><b><%= link_to topic.title, topic%></b></div>
             <div class="col-md-2">Posted by: <%= link_to author.name, author%></div>
@@ -29,7 +29,5 @@
           </div>
         </div>
     <% end %>
-
-
   </div>
 </div>
