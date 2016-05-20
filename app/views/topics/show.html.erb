@@ -2,6 +2,7 @@
 <div class="container">
 
   <div class="col-md-8">
+
     <div class="breadcrumb">
       <% if logged_in? %>
           Create new topic at <%= link_to "here", new_topic_path %>
@@ -9,26 +10,30 @@
           You need <%= link_to "Log in", login_path %> or <%= link_to "Sign up", signup_path %> to create a new topic!
       <% end %>
     </div>
+
     <ol class="breadcrumb">
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to @category.name, @category %></li>
     </ol>
-    <div class="panel panel-default">
 
+    <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
           <b align="center">[<%= link_to @category.name, @category %>] <%= @topic.title %></b>
         </h3>
       </div>
+
       <div class="panel-body">
         <div class="col-md-3 center">
           <%= gravatar_for(@user) %>
           <br>
           <%= link_to @user.name, @user %>
           <br>
+          <%= pluralize(@user.topics.count + @user.comments.count, "post") %>
         </div>
         <div class="col-md-9"><%= raw @topic.content %></div>
       </div>
+
       <div class="panel-body">
         <hr>
         <div class="col-md-4">
@@ -39,6 +44,64 @@
       </div>
     </div>
     <% count = 2 %>
+    <% @comment.each do |t| %>
+        <% user_comment = User.find_by_id(t.user_id) %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-3 center">
+              <%= gravatar_for(user_comment) %>
+              <br>
+              <%= link_to user_comment.name, user_comment %>
+              <br>
+              <%= pluralize(user_comment.topics.count + user_comment.comments.count, "post") %>
+            </div>
+            <div class="col-md-9"><%= raw t.content %></div>
+          </div>
+          <div class="panel-body">
+            <hr>
+            <div class="col-md-4">
+              <%= link_to "edit", edit_comment_path(t) %>
+            </div>
+            <div class="col-md-7"><i>Created at: <%= t.created_at %></i></div>
+            <div class="col-md-1"><i>#<%= count %></i></div>
+          </div>
+        </div>
+        <% count = count + 1 %>
+    <% end %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <b>Add a comment</b>
+        </h3>
+      </div>
+
+      <div class="panel-body">
+        <% if logged_in? %>
+            <div class="col-md-3 center">
+              <%= gravatar_for(@user_now) %>
+              <br>
+            </div>
+
+            <%= form_for @new_comment do |f| %>
+                <%= render 'shared/error_comment_messages' %>
+                <div class="col-md-7 center">
+                  <%= f.cktext_area :content %>
+                  <%= f.radio_button :topic_id, @topic.id, checked: true %>
+
+                </div>
+                <div class="col-md-2">
+                  <%= f.submit "Save", class: "btn btn-primary" %></div>
+            <% end %>
+            </div>
+        <% else %>
+            You need <%= link_to "Log in", login_path %> or <%= link_to "Sign up", signup_path %> to add a comment!
+        <% end %>
+
+
+
+        </div>
   </div>
+</div>
 </div>
 
