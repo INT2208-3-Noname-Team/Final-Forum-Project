@@ -26,8 +26,6 @@ class TopicsController < ApplicationController
     @user = User.find_by_id(@topic.user_id)
     @info = @user.information
     @category = Category.find_by_id(@topic.category_id)
-    # @comment = @topic.comments.all
-    # @new_comment = Comment.new
     @user_now = current_user
   end
 
