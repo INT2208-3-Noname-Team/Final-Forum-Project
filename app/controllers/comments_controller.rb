@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to Topic.find_by_id(@comment.topic_id)
     else
-      flash[:danger] = "Something wrong"
+      flash[:danger] = "Something went wrong"
       redirect_to Topic.find_by_id(@comment.topic_id)
     end
   end
