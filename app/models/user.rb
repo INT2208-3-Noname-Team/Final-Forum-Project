@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_one :information, dependent: :destroy
+  has_one :information
   has_many :topics
   has_many :comments
   attr_accessor :remember_token
