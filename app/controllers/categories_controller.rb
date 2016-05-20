@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @topic = @category.topics.all.reverse
   end
 
   def index
