@@ -1,7 +1,8 @@
 <% provide(:title, "Edit topic") %>
 
 <div class="container">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
     <h1 class="breadcrumb">Edit topic</h1>
     <%= form_for (@topic) do |f| %>
         <%= render 'shared/error_topic_messages' %>
@@ -16,4 +17,5 @@
         <div class="col-md-4"><%= f.submit "Edit topic", class: "btn btn-primary" %></div>
     <% end %>
   </div>
+<div class="col-md-2"></div>
 </div>

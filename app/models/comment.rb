@@ -3,6 +3,6 @@ class Comment < ActiveRecord::Base
   belongs_to :topic
   #not save a empty comment
   validates :content, presence: true,
-            length: {in: 30..150}
+            length: {minimum: 30}
 
 end

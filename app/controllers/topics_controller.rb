@@ -28,8 +28,8 @@ class TopicsController < ApplicationController
     @info = @user.information
     @category = Category.find_by_id(@topic.category_id)
     #get comment of topic
-    @comment = @topic.comments.all
-    @new_comment = Comment.new
+    @all_comment = @topic.comments.all
+    @comment = Comment.new
     @user_now = current_user
   end
 

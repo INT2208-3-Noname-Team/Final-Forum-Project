@@ -1,6 +1,16 @@
-<h1>Comments#edit</h1>
-<%= form_for @comment do |f| %>
-    <%= f.label :content, "Content"%>
-    <%= f.text_area :content, class: "form-control"%>
-    <%= f.submit "Save" %>
-<% end %>
+<% provide(:title, "Edit comment") %>
+<div class="container">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h1 class="breadcrumb">Edit topic</h1>
+    <%= form_for @comment do |f| %>
+        <%= render 'shared/error_comment_messages' %>
+        <%= f.label :content, "Content" %>
+        <%= f.cktext_area :content, :ckeditor => {:toolbar => 'mini'}, class: "form-control" %>
+        <br>
+
+        <div class="col-md-4"><%= f.submit "Edit Comment", class: "btn btn-primary" %></div>
+    <% end %>
+  </div>
+  <div class="col-md-2"></div>
+</div>
