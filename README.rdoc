@@ -1,15 +1,9 @@
-== README
+README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple Forum using Rails framework, followed by The Ruby On Rails Tutorial 3rd Edition of Micheal Harlt.
 
-Things you may want to cover:
+This is a project of Noname Team for Software Engineering Subject
 
-* Database creation
+View the demo version at forum-project.herokuapp.com
 
-* Database initialization
-
-* How to run the test suite
-
-
-Please feel free to use a different markup language if you do not plan to run
+Download Document for Project at 
