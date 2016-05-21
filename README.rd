@@ -1,9 +1,9 @@
-README
+==README
 
 This is a simple Forum using Rails framework, followed by The Ruby On Rails Tutorial 3rd Edition of Micheal Harlt.
 
 This is a project of Noname Team for Software Engineering Subject
 
-View the demo version at forum-project.herokuapp.com
+View the demo version at https://forum-project.herokuapp.com/
 
-Download Document for Project at 
+View project management at https://www.pivotaltracker.com/n/projects/1551297
