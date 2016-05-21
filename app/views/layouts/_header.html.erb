@@ -2,12 +2,12 @@
   <div class="container">
     <div class="col-md-8">
       <%= link_to "Noname Forum", root_path, id: "logo" %>
+      <!--add category menu-->
       <nav>
         <ul class="nav navbar-nav navbar-left">
           <% Category.all.each do |t| %>
               <li><%= link_to t.name, t %></li>
           <% end %>
-
         </ul>
       </nav>
     </div>
